@@ -20,11 +20,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
     if (SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
-        return;
+        return SDL_APP_FAILURE;
     }
     if (!SDL_CreateWindowAndRenderer("Tetris", SCREEN_WIDTH, SCREEN_HEIGHT, 0, &window, &renderer)) {
         SDL_Log("Unable to create window and renderer: %s", SDL_GetError());
-        return;
+        return SDL_APP_FAILURE;
     }
     SDL_SetRenderLogicalPresentation(renderer, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_LOGICAL_PRESENTATION_LETTERBOX);
     
